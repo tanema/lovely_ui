@@ -1,4 +1,5 @@
 local _PACKAGE = (...):match("^(.+)[%./][^%./]+"):gsub("[%./]elements", "")
+print(_PACKAGE)
 local class = require(_PACKAGE..'/middleclass')
 local defaults = require(_PACKAGE..'/elements/defaults')
 local KeyableElement = require(_PACKAGE..'/elements/keyable_element')

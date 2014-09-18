@@ -1,5 +1,6 @@
-local _PACKAGE = (...):match("^(.+)[%./][^%./]+")
+local _PACKAGE = (...):match("^(.+)[%./][^%./]+") or ""
 
+require(_PACKAGE..'/love_ext')
 local class = require(_PACKAGE..'/middleclass')
 
 local FocusableElement = require(_PACKAGE..'/elements/focusable_element')
@@ -197,6 +198,7 @@ local all_callbacks = {
   'gamepadpressed', 'gamepadreleased'
 }
 
+local function __NULL__() end
 function UI:registerEvents()
   self.oldKeyRepeat = love.keyboard.hasKeyRepeat()
   love.keyboard.setKeyRepeat(true)
