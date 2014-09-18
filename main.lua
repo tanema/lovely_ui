@@ -19,15 +19,8 @@ function love.load()
   end)
 
   ui:addLabel(250, 30, 300, 80, {
-    text = 'A Dark World',
+    text = 'Lovely_UI',
     font = titleFont,
-  })
-  ui:addLabel(450, 30, 400, 80, {
-    text = [[
-      press return to enter the game
-      press esc to exit
-    ]],
-    font = labelFont,
   })
 
   ui:addCheckbox(30, 210, 40, 40, {
