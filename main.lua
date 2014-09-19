@@ -8,7 +8,7 @@ function love.load()
     text = 'start',
     font = titleFont,
   }):on('selected', function(button)
-    state.switch(require "stages.level1")
+    print('start')
   end)
 
   ui:addButton(30, 120, 200, 80, {
