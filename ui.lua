@@ -24,8 +24,10 @@ local UI = class('UI', UIElement)
 function UI:initialize(x, y, w, h, options)
   UIElement.initialize(self, x, y, w, h, options) 
 
-  self.x = x and x or 0
-  self.y = y and y or 0
+  self.translate_x = x and x or 0
+  self.translate_y = y and y or 0
+  self.x = 0
+  self.y = 0
   self.w = w and w or love.graphics.getWidth()
   self.h = h and h or love.graphics.getHeight()
 
@@ -100,7 +102,7 @@ function UI:mousereleased(x, y) self:mouseEvent('mousereleased', x, y) end
 
 function UI:mouseEvent(event, x, y)
   --translate mouse coords to ours
-  local mx, my = (x-self.x), (y-self.y)
+  local mx, my = (x-self.translate_x), (y-self.translate_y)
   for i, element in ipairs(self.elements) do
     if element:isInstanceOf(ClickableElement) and element:isInside(mx,my) then
       element[event](element, event, x, y)
@@ -119,7 +121,7 @@ function UI:update(dt)
   local cursor = love.mouse.getCursor()
 
   --translate mouse coords to ours
-  mx, my = (mx-self.x), (my-self.y)
+  mx, my = (mx-self.translate_x), (my-self.translate_y)
 
   for i, element in ipairs(self.elements) do
     if element:isInside(mx,my) then
@@ -134,14 +136,14 @@ end
 function UI:draw()
   love.graphics.push()
     love.graphics.setScissor(self.x, self.y, self.w, self.h)
-    love.graphics.translate(self.x, self.y)
+    love.graphics.translate(self.translate_x, self.translate_y)
 
     if self.is_visible then
       UIElement.draw(self) 
-    end
-    for i, element in ipairs(self.elements) do
-      if element.is_visible then
-        element:draw()
+      for i, element in ipairs(self.elements) do
+        if element.is_visible then
+          element:draw()
+        end
       end
     end
 

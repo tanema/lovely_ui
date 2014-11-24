@@ -38,7 +38,6 @@ end
 function Slider:mousepressed(event, mx, my)
   KeyableElement.mousepressed(self, event, mx, my)
   self.isActive = true
-  self.lastMouseX = mx
 end
 
 function Slider:left()
@@ -54,8 +53,7 @@ end
 function Slider:update(dt, mx, my)
   KeyableElement.update(self, dt, mx, my)
   if self.isActive == true and love.mouse.isDown("l") then
-    self:setValue(self.value - ((self.lastMouseX - mx) / self.w)) --check and trigger change
-    self.lastMouseX = mx
+    self:setValue(((mx - self.x) / self.w)) --check and trigger change
   else
     self.isActive = false
   end

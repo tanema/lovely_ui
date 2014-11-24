@@ -1,9 +1,13 @@
 local UI = require 'ui'
-local ui = UI:new()
+local ui
 local titleFont = love.graphics.newFont(35)
 local labelFont = love.graphics.newFont(25)
 
 function love.load()
+  ui = UI:new(50,50,love.graphics.getWidth(), love.graphics.getHeight(), {
+    borderColor = {255,255,255}
+  })     
+
   local startButton = ui:addButton(30, 30, 200, 80, {
     text = 'start',
     font = titleFont,
