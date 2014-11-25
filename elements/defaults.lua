@@ -24,6 +24,8 @@ return {
     cursor = love.mouse.getSystemCursor("hand"),
   },
   checkbox    = {
+    w = 40,
+    h = 40,
     bgColor = {61,64,68},
     borderColor = {214,221,207},
     hoverFontColor = {45,91,49},

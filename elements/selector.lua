@@ -4,8 +4,8 @@ local defaults = require(_PACKAGE..'/elements/defaults')
 local KeyableElement = require(_PACKAGE..'/elements/keyable_element')
 local Selector = class('Selector', KeyableElement)
 
-function Selector:initialize(x, y, w, h, options)
-  KeyableElement.initialize(self, x, y, w, h, options, defaults.selector)   
+function Selector:initialize(options)
+  KeyableElement.initialize(self, options, defaults.selector)   
 
   self.selectedIndex = self.value and self.value or 1
   assert(#self.values > 0, 'no values provided to selector')

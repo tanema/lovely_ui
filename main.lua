@@ -4,30 +4,48 @@ local titleFont = love.graphics.newFont(35)
 local labelFont = love.graphics.newFont(25)
 
 function love.load()
-  ui = UI:new(50,50,love.graphics.getWidth(), love.graphics.getHeight(), {
+  ui = UI:new({
+    x = 50,
+    y = 50,
+    w = love.graphics.getWidth(), 
+    h = love.graphics.getHeight(),
     borderColor = {255,255,255}
   })     
 
-  local startButton = ui:addButton(30, 30, 200, 80, {
+  local startButton = ui:addButton({
+    x = 30,
+    y = 30,
+    w = 200, 
+    h = 80,
     text = 'start',
     font = titleFont,
   }):on('selected', function(button)
     print('start')
   end)
 
-  ui:addButton(30, 120, 200, 80, {
+  ui:addButton({
+    x = 30,
+    y = 120,
+    w = 200, 
+    h = 80,
     text = 'quit',
     font = titleFont,
   }):on('selected', function(button)
     love.event.quit()
   end)
 
-  ui:addLabel(250, 30, 300, 80, {
+  ui:addLabel({
+    x = 250,
+    y = 30,
+    w = 300, 
+    h = 80,
     text = 'Lovely_UI',
     font = titleFont,
   })
 
-  ui:addCheckbox(30, 210, 40, 40, {
+  ui:addCheckbox({
+    x = 30,
+    y = 210,
     value = true
   }):on('change', function(checkbox, value) 
     if value == true then
@@ -36,34 +54,62 @@ function love.load()
       startButton:hide()
     end
   end)
-  ui:addLabel(90, 210, 300, 80, {
+  ui:addLabel({
+    x = 90,
+    y = 210,
+    w = 300, 
+    h = 80,
     text = 'Add awesome',
     font = labelFont,
   })
 
-  ui:addTextInput(30, 260, 200, 40, {
+  ui:addTextInput({
+    x = 30,
+    y = 260,
+    w = 200, 
+    h = 40,
     value = "anon",
   })
-  ui:addLabel(250, 260, 300, 80, {
+  ui:addLabel({
+    x = 250,
+    y = 260,
+    w = 300, 
+    h = 80,
     text = 'Your name',
     font = labelFont,
   })
 
-  local progressBar = ui:addProgressBar(30, 355, 200, 40, {
+  local progressBar = ui:addProgressBar({
+    x = 30,
+    y = 355,
+    w = 200, 
+    h = 40,
     value = 0.3
   })
-  local scaleLabel = ui:addLabel(250, 305, 300, 80, {
+  local scaleLabel = ui:addLabel({
+    x = 250,
+    y = 305,
+    w = 300, 
+    h = 80,
     text = '30',
     font = labelFont,
   })
-  ui:addSlider(30, 305, 200, 40, {
+  ui:addSlider({
+    x = 30,
+    y = 305,
+    w = 200, 
+    h = 40,
     value = 0.30
   }):on('change', function(button, value) 
     scaleLabel.text = math.floor(value*100)
     progressBar:setValue(value)
   end)
 
-  ui:addSelector(30, 410, 200, 40, {
+  ui:addSelector({
+    x = 30,
+    y = 410,
+    w = 200, 
+    h = 40,
     value = 2,
     values = {
       "1024 x 768",  
@@ -76,7 +122,7 @@ function love.load()
     }
   })
 
-  ui:addColorPicker(400, 120)
+  ui:addColorPicker({x = 400, y = 120})
 end
 
 function love.quit()

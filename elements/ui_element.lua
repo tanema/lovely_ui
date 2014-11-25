@@ -3,8 +3,8 @@ local class = require(_PACKAGE..'/middleclass')
 local base_defaults = require(_PACKAGE..'/elements/defaults')
 local UIElement = class('UIElement')
 
-function UIElement:initialize(x, y, w, h, options, defaults)
-  self.x, self.y, self.w, self.h = x, y, w, h
+function UIElement:initialize(options, defaults)
+  self.x, self.y, self.w, self.h = 0, 0, 100, 50
 
   for k, v in pairs(base_defaults.base) do self[k] = v end
 
@@ -12,9 +12,7 @@ function UIElement:initialize(x, y, w, h, options, defaults)
   for k,v in pairs(defaults) do self[k] = v end
 
   self.options = options and options or {}
-  for key, val in pairs(self.options) do
-    self[key] = val
-  end
+  for key, val in pairs(self.options) do self[key] = val end
 
   self.event_handlers = {}
   self.hasHover = false

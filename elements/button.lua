@@ -4,8 +4,8 @@ local defaults = require(_PACKAGE..'/elements/defaults')
 local KeyableElement = require(_PACKAGE..'/elements/keyable_element')
 local Button = class('Button', KeyableElement)
 
-function Button:initialize(x, y, w, h, options)
-  KeyableElement.initialize(self, x, y, w, h, options, defaults.button)   
+function Button:initialize(options)
+  KeyableElement.initialize(self, options, defaults.button)   
 end
 
 function Button:mousepressed(event, x, y)

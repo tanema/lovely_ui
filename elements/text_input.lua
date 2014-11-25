@@ -4,8 +4,8 @@ local defaults = require(_PACKAGE..'/elements/defaults')
 local KeyableElement = require(_PACKAGE..'/elements/keyable_element')
 local TextInput = class('TextInput', KeyableElement)
 
-function TextInput:initialize(x, y, w, h, options) 
-  KeyableElement.initialize(self, x, y, w, h, options, defaults.textinput)
+function TextInput:initialize(options) 
+  KeyableElement.initialize(self, options, defaults.textinput)
 
   if self.value ~= nil then
     self.text = self.value

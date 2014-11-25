@@ -4,8 +4,8 @@ local defaults = require(_PACKAGE..'/elements/defaults')
 local UIElement = require(_PACKAGE..'/elements/ui_element')
 local ProgressBar = class('ProgressBar', UIElement)
 
-function ProgressBar:initialize(x, y, w, h, options)
-  UIElement.initialize(self, x, y, w, h, options, defaults.progressbar)   
+function ProgressBar:initialize(options)
+  UIElement.initialize(self, options, defaults.progressbar)   
   
   self:setValue(self.value or 0)
 end

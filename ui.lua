@@ -21,32 +21,32 @@ local element_types = {
 
 local UI = class('UI', UIElement)
 
-function UI:initialize(x, y, w, h, options)
-  UIElement.initialize(self, x, y, w, h, options) 
+function UI:initialize(options)
+  UIElement.initialize(self, options) 
 
-  self.translate_x = x and x or 0
-  self.translate_y = y and y or 0
+  self.translate_x = self.x and self.x or 0
+  self.translate_y = self.y and self.y or 0
   self.x = 0
   self.y = 0
-  self.w = w and w or love.graphics.getWidth()
-  self.h = h and h or love.graphics.getHeight()
+  self.w = self.w and self.w or love.graphics.getWidth()
+  self.h = self.h and self.h or love.graphics.getHeight()
 
   self.focus_index = 1
   self.elements = {}
   self:registerEvents()
 end
 
-function UI:addButton(x, y, w, h, options)      return self:addElement('button', x, y, w, h, options)      end
-function UI:addLabel(x, y, w, h, options)       return self:addElement('label', x, y, w, h, options)       end
-function UI:addCheckbox(x, y, w, h, options)    return self:addElement('checkbox', x, y, w, h, options)    end
-function UI:addTextInput(x, y, w, h, options)   return self:addElement('textinput', x, y, w, h, options)   end
-function UI:addSlider(x, y, w, h, options)      return self:addElement('slider', x, y, w, h, options)      end
-function UI:addColorPicker(x, y, options)       return self:addElement('colorpicker', x, y, 0, 0, options) end
-function UI:addProgressBar(x, y, w, h, options) return self:addElement('progressbar', x, y, w, h, options) end
-function UI:addSelector(x, y, w, h, options)    return self:addElement('selector', x, y, w, h, options)    end
+function UI:addButton(options)      return self:addElement('button', options)      end
+function UI:addLabel(options)       return self:addElement('label', options)       end
+function UI:addCheckbox(options)    return self:addElement('checkbox', options)    end
+function UI:addTextInput(options)   return self:addElement('textinput', options)   end
+function UI:addSlider(options)      return self:addElement('slider', options)      end
+function UI:addColorPicker(options) return self:addElement('colorpicker', options) end
+function UI:addProgressBar(options) return self:addElement('progressbar', options) end
+function UI:addSelector(options)    return self:addElement('selector', options)    end
 
-function UI:addElement(element_name, x, y, w, h, options) 
-  local new_element = element_types[element_name]:new(x, y, w, h, options)
+function UI:addElement(element_name, options) 
+  local new_element = element_types[element_name]:new(options)
   self.elements[#self.elements+1] = new_element
   return new_element
 end

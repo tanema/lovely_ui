@@ -4,8 +4,8 @@ local defaults = require(_PACKAGE..'/elements/defaults')
 local KeyableElement = require(_PACKAGE..'/elements/keyable_element')
 local Slider = class('Slider', KeyableElement)
 
-function Slider:initialize(x, y, w, h, options)
-  KeyableElement.initialize(self, x, y, w, h, options, defaults.slider)   
+function Slider:initialize(options)
+  KeyableElement.initialize(self, options, defaults.slider)   
 
   self:setValue(self.value and self.value or 0)
 end

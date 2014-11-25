@@ -4,8 +4,8 @@ local defaults = require(_PACKAGE..'/elements/defaults')
 local KeyableElement = require(_PACKAGE..'/elements/keyable_element')
 local ColorPicker = class('ColorPicker', KeyableElement)
 
-function ColorPicker:initialize(x, y, w, h, options) 
-  KeyableElement.initialize(self, x, y, w, h, options, defaults.colorpicker)   
+function ColorPicker:initialize(options) 
+  KeyableElement.initialize(self, options, defaults.colorpicker)   
 
   self.colorboxData = love.image.newImageData(_PACKAGE:gsub("%.", "/")..'/assets/colorbox.png' ) 
 	self.colorbox = love.graphics.newImage( self.colorboxData )

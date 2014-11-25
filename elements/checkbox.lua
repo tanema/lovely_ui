@@ -4,8 +4,8 @@ local defaults = require(_PACKAGE..'/elements/defaults')
 local KeyableElement = require(_PACKAGE..'/elements/keyable_element')
 local CheckBox = class('Button', KeyableElement)
 
-function CheckBox:initialize(x, y, w, h, options)
-  KeyableElement.initialize(self, x, y, w, h, options, defaults.checkbox)  
+function CheckBox:initialize(options)
+  KeyableElement.initialize(self, options, defaults.checkbox)  
 
   if self.value == true then
     self.isActive = self.value
