@@ -9,7 +9,10 @@ function love.load()
     y = 50,
     w = love.graphics.getWidth(), 
     h = love.graphics.getHeight(),
-    borderColor = {255,255,255}
+    borderColor = {255,255,255},
+    defaults = {
+      font = titleFont
+    }
   })     
 
   local startButton = ui:addButton({
@@ -18,7 +21,6 @@ function love.load()
     w = 200, 
     h = 80,
     text = 'start',
-    font = titleFont,
   }):on('selected', function(button)
     print('start')
   end)
@@ -29,7 +31,6 @@ function love.load()
     w = 200, 
     h = 80,
     text = 'quit',
-    font = titleFont,
   }):on('selected', function(button)
     love.event.quit()
   end)
@@ -40,7 +41,6 @@ function love.load()
     w = 300, 
     h = 80,
     text = 'Lovely_UI',
-    font = titleFont,
   })
 
   ui:addCheckbox({
@@ -68,6 +68,7 @@ function love.load()
     y = 260,
     w = 200, 
     h = 40,
+    font = labelFont,
     value = "anon",
   })
   ui:addLabel({

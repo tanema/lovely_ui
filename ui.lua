@@ -22,6 +22,8 @@ local element_types = {
 local UI = class('UI', UIElement)
 
 function UI:initialize(options)
+  self.defaults = {}
+
   UIElement.initialize(self, options) 
 
   self.translate_x = self.x and self.x or 0
@@ -45,7 +47,16 @@ function UI:addColorPicker(options) return self:addElement('colorpicker', option
 function UI:addProgressBar(options) return self:addElement('progressbar', options) end
 function UI:addSelector(options)    return self:addElement('selector', options)    end
 
+function UI:setDefault(attr_name, value)
+  print(self)
+  self.defaults[attr_name] = value
+end
+
 function UI:addElement(element_name, options) 
+  for k,v in pairs(self.defaults) do 
+    options[k] = options[k] or v
+  end
+
   local new_element = element_types[element_name]:new(options)
   self.elements[#self.elements+1] = new_element
   return new_element
