@@ -105,7 +105,7 @@ function UI:mouseEvent(event, x, y)
   local mx, my = (x-self.translate_x), (y-self.translate_y)
   for i, element in ipairs(self.elements) do
     if element:isInstanceOf(ClickableElement) and element:isInside(mx,my) then
-      element[event](element, event, x, y)
+      element[event](element, event, mx, my)
       if element:isInstanceOf(FocusableElement) then
         element:focus()
         self.focus_index = i
@@ -121,7 +121,7 @@ function UI:update(dt)
   local cursor = love.mouse.getCursor()
 
   --translate mouse coords to ours
-  mx, my = (mx-self.translate_x), (my-self.translate_y)
+  mx, my = (mx - self.translate_x), (my - self.translate_y)
 
   for i, element in ipairs(self.elements) do
     if element:isInside(mx,my) then
