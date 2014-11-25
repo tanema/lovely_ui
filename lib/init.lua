@@ -1,5 +1,4 @@
-local _PACKAGE = (...):match("^(.+)[%./][^%./]+") or ""
-
+local _PACKAGE = string.gsub(...,"%.","/") or ""
 require(_PACKAGE..'/love_ext')
 local class = require(_PACKAGE..'/middleclass')
 

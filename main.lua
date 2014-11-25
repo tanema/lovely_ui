@@ -1,4 +1,4 @@
-local UI = require 'ui'
+local UI = require 'lib'
 local ui
 local titleFont = love.graphics.newFont(35)
 local labelFont = love.graphics.newFont(25)
